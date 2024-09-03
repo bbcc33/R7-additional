@@ -9,4 +9,7 @@ class Customer < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  # pulls data from the orders table, indicates customer can have many orders, sets up necessary associations
+  has_many :orders
 end

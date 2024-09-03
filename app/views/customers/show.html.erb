@@ -2,9 +2,28 @@
 
 <%= render @customer %>
 
+<% if @customer.orders.any? %>
+<h1>Orders</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Number</th>
+        <th colspan="10"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @customer.orders %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No orders found for this customer.</p>
+<% end %>
+
+<br>
 <div>
   <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to customers", customers_path %>
-
+<br>
   <%= button_to "Destroy this customer", @customer, method: :delete %>
 </div>
