@@ -1,0 +1,8 @@
+<h1><%= @orders.product_name %></h1>
+<h2><%= @orders.product_count%></h2>
+
+<%= link_to "Go Back to Orders", orders_path %>
+<%= link_to "Go Back Home", customers_path %>
+<%= button_to "Delete", @order, method: :delete %>
+
+
