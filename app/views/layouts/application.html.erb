@@ -10,7 +10,77 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="dark-mode">
+
+    <%# So alerts show to user %>
+    <div class="container mt-3">
+      <% if flash[:notice] %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      
+      <% if flash[:alert] %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+    </div>
+
+  <%# Jumbotron design %>
+  <div class="jumbotron banner-background">
+    <h1>Customers and Orders</h1>
+    <p>These are the Customers and their Orders</p>
+  </div>
+
+<%# Jumbotron pull down menu %>
+  <div class="jumbotron" id="dropdowns">
+    <div class="row">
+      <div class="col-sm-2">
+
+  <ul class="nav nav-pills" id="test-text">
+    <li class="nav-item dropdown" id="test-text">
+          <a class="nav-link dropdown-toggle" id="test-text" href="#" id="customersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Customers</a>        
+          <ul class="dropdown-menu" aria-labelledby="customersDropdown" id="test-text">          
+          <% @customers.each do |customer| %>
+            <li>
+              <a class="dropdown-item" href="<%= customer_path(customer) %>" id="test-text">
+              <i class="fa fa-user" id="test-text"></i>        
+                <%= customer.full_name %>
+              </a>
+              </li>
+              <% end %>
+          </ul>
+        </li>
+        </ul>
+        </div>
+
+      <div class="col-sm-2">
+  <ul class="nav nav-pills" id="test-text" id="test-text">
+    <li class="nav-item dropdown" id="test-text" id="test-text">
+      <a class="nav-link dropdown-toggle" id="test-text" id="test-text" href="#" id="ordersDropdown" role="button" data-bs-toggle="dropdown" area-expanded="false">Orders</a>
+          <ul class="dropdown-menu" aria-labelledby="ordersDropdown" id="test-text">          
+            <% @orders.each do |order| %>
+            <li>
+              <a class="dropdown-item" id="test-text" href="<%= order_path(order) %>"> 
+              <i class="fa fa-shopping-cart" id="test-text"></i>        
+              <%= order.product_name %> 
+              </a>
+            </li>
+        <% end %> 
+      </ul>
+    </li>
+  </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

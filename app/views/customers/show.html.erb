@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+
+<div>    <%= button_to "Destroy this customer", @customer, method: :delete, class: 'btn btn-danger btn-sm' %>
+
+
+<%= render @customer %>
+
+<% if @customer.orders.any? %>
+<h1>Orders</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Number</th>
+        <th colspan="10"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customer.orders.each do |order| %>
+      <tr>
+        <td><%= order.product_name %></td>
+        <td><%= order.product_count %></td>
+        <td>
+          <%= link_to 'Show', order_path(order), class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'Edit', edit_order_path(order), class: 'btn btn-warning btn-sm' %>
+          <%= button_to 'Delete', order_path(order), method: :delete, class: 'btn btn-danger btn-sm' %>
+        </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No orders found for this customer.</p>
+<% end %>
+
+<br>
+<div>
+    <%= link_to "Back to customers", customers_path %>
+</div>
