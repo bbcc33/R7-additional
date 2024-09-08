@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @orders = Order.find(params[:id])
   end
 
   def edit
@@ -22,19 +21,21 @@ class OrdersController < ApplicationController
     # @order = Order.new(product_name: '...', product_count: '...') # no filtering and security checks this way
     @order = Order.new(order_params)
     if @order.save
-      flash.notice = 'The order was created successfully'
-      # redirect_to @order
-      render :new
+      flash[:notice] = 'The order was created successfully'
+      redirect_to @order
+      # render :new
     else
+      flash[:alert] = 'Failed to create a new order'
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @order.update(order_params)
-      flash.notice = 'The order was updated successfully.'
+      flash[:notice] = 'The order was updated successfully.'
       redirect_to @order
     else
+      flash[:alert] = 'Failed to update order'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -43,7 +44,8 @@ class OrdersController < ApplicationController
     @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'The order was succesfully deleted' }
+      flash[:notice] = 'The order was successfully deleted'
+      format.html { redirect_to orders_url }
       format.json { head :no_content }
     end
   end

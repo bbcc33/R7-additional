@@ -1,8 +1,14 @@
-<h1><%= @orders.product_name %></h1>
-<h2><%= @orders.product_count%></h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th><%= @order.product_name %></th>
+            <th><%= @order.product_count%></th>
+            <th><%= button_to "Delete", @order, method: :delete, class: 'btn btn-danger btn-sm' %></th>
+        </tr>
+    </thead>
+</table>
 
-<%= link_to "Go Back to Orders", orders_path %>
-<%= link_to "Go Back Home", customers_path %>
-<%= button_to "Delete", @order, method: :delete %>
+<%= link_to "Go Back to Orders", orders_path, class: 'btn btn-primary btn-sm' %>
+<%= link_to "Go Back Home", customers_path, class: 'btn btn-primary btn-sm' %>
 
 

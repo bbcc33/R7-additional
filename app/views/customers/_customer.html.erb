@@ -1,17 +1,23 @@
 <div id="<%= dom_id customer %>">
-  <p>
-    <strong>Full name:</strong>
-    <%= customer.full_name %>
-  </p>
+  <%# <div class="container"> %>
+    <table class="table table-striped">
+      <%# <thead> %>
 
-  <p>
-    <strong>Phone:</strong>
-    <%= customer.phone %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= customer.email %>
-  </p>
-
+        <%# </thead> %>
+        <tbody>
+          <tr>
+            <td><strong>Full name:</strong></td>
+            <td><%= customer.full_name %></td>
+          </tr>
+          <tr>
+            <td><strong>Phone:</strong></td>
+            <td><%= customer.phone %></td>
+          </tr>
+          <tr>
+            <td><strong>Email:</strong></td>
+            <td><%= customer.email %></td>
+          <tr>
+        </tbody>
+    </table>
+  </div>
 </div>

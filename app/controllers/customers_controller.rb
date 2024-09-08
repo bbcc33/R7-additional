@@ -24,9 +24,10 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-      flash.notice = 'The customer record was created successfully.'
+      flash[:notice] = 'The customer record was created successfully.'
       redirect_to @customer
     else
+      flash[:alert] = 'Failed to create a new order'
       render :new, status: :unprocessable_entity
     end
     # @customer = Customer.new(customer_params)
@@ -45,9 +46,10 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1 or /customers/1.json
   def update
     if @customer.update(customer_params)
-      flash.notice = 'The customer record was updated successfully.'
+      flash[:notice] = 'The customer record was updated successfully.'
       redirect_to @customer
     else
+      flash[:alert] = 'Failed to update customer'
       render :edit, status: :unprocessable_entity
     end
     #   respond_to do |format|
@@ -65,9 +67,9 @@ class CustomersController < ApplicationController
   def destroy
     begin
       @customer.destroy
-      flash.notice = 'The customer record was successfully deleted'
+      flash[:notice] = 'The customer record was successfully deleted'
     rescue ActiveRecord::InvalidForeignKey
-      flash.notice = 'That customer record could not be deleted, because the customer has orders'
+      flash[:alert] = 'That customer record could not be deleted, because the customer has orders'
     end
 
     respond_to do |format|

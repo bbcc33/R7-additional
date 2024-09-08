@@ -1,0 +1,89 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+ @import "font-awesome";
+
+ .my_alert {
+    color: red;
+  }
+
+  body {
+    $bs-card-color: white;
+
+  }
+
+  .card-header, .card-body, .card-text {
+    color:white;
+  }
+
+  .dark-mode {
+    color: white;
+  }
+
+  :root {
+    --bs-body-bg: #29111f;
+ }
+
+ #test-text {
+  color: white;
+ }
+
+ .jumbotron {
+  color: rgb(255, 255, 255);
+}
+
+ @font-face {
+  font-family: 'Dosis-VariableFont_wght';
+  src: url('Dosis-VariableFont_wght.ttf');
+}
+ 
+.banner-background {
+  background-image: url('1639.jpg');
+  background-size: cover;
+  font-family: 'Dosis-VariableFont_wght';
+  height: 200px;
+
+}
+
+.jumbotron.banner-background {
+  background-image: url('1639.jpg');
+  background-size: cover;
+  height: 200px; 
+  color: white; 
+
+  /* Flexbox properties for centering content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px; /* Optional: Adds padding for smaller screens */
+}
+
+.jumbotron.banner-background::before {
+  position: absolute;
+  background-image: url('1639.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8; /* Adjust opacity as needed */
+  z-index: -1; /* Ensure the background image is behind the text */
+}
+
+#dropdowns {
+  background-color:rgb(62, 6, 69);
+}
+
+
